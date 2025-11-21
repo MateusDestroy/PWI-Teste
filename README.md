@@ -21,13 +21,11 @@ Antes de executar o projeto, verifique:
 2. Confirme que o **SQL Server Express** e o **SSMS** estão atualizados.  
 3. Configure a **connection string** no arquivo `appsettings.json` para apontar para seu banco de dados.  
 
+###  Exemplo de tela para API
+https://www.figma.com/design/ZJVaUswEk9FrMnghKbDRmQ/Untitled?node-id=0-1&m=dev&t=AbMVfLVrPvDId42Z-1
+
 ### ▶️ Executando o Projeto
 ```bash
 dotnet restore
 dotnet build
 dotnet run
-
-
-### 📌 Exemplo de telas para utilizar 
-
-https://www.figma.com/design/ZJVaUswEk9FrMnghKbDRmQ/Untitled?node-id=0-1&m=dev&t=DmY1cO7sWPiN4Au0-1
