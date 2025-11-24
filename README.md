@@ -46,10 +46,10 @@ https://www.figma.com/design/ZJVaUswEk9FrMnghKbDRmQ/Untitled?node-id=0-1&m=dev&t
 
 ## 🗄️ Migrations
 
-Criei minhas entidades para fazer nossa tabela de banco de dados na pasta **Entities** está a forma como fiz. 
+Primeiro criei minha pasta **Entities** para fazer minhas entidades à serem criadas e transfomadas no nosso banco de dados.
 
 Logo depois utilizei uma pequena função do **dotnet** para fazer a transfomação das minhas **Entities** em informações para subir para meu banco de dados,
-eu usei o **dotnet-ef migrations add Pwi** e assim transformei as informações para serem lidas e executadas para fazer o meu banco de dados
+eu usei o **dotnet-ef migrations add Pwi** e assim transformei as informações para serem lidas e executadas para fazer o meu banco de dados com minhas tabelas e colunas prontas
 
 Para subir todas essa informações para o banco de dados, eu usei o comando **dotnet-ef database update** e assim todas as informações forma passadas
 para o SqlServer
