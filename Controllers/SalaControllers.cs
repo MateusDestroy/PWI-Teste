@@ -1,106 +1,68 @@
-using System;
+using Microsoft.AspNetCore.Mvc;
+using TreinoC_.Entities;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using TreinoC_.Context;
-using TreinoC_.Entities;
 
 namespace TreinoC_.Controllers
 {
-    public interface ISalaController
-    {
-        IActionResult Create(Sala sala);
-    }
-
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class SalaController : ControllerBase
     {
-        private readonly PwiContext _contextSala;
+        // Simulação de banco de dados em memória
+        private static List<Sala> salas = new List<Sala>();
 
-        public SalaController(PwiContext contextSala)
+        // GET: api/sala
+        [HttpGet]
+        public ActionResult<IEnumerable<Sala>> GetSalas()
         {
-            _contextSala = contextSala;
-
+            return Ok(salas);
         }
 
-
-        // procurando sala por ID
-
+        // GET: api/sala/{id}
         [HttpGet("{id}")]
-        public IActionResult ObterSalaID(int id)
+        public ActionResult<Sala> GetSala(int id)
         {
-            var sala = _contextSala.Tb_salas.Find(id);
+            var sala = salas.FirstOrDefault(s => s.IdSala == id);
+            if (sala == null)
+                return NotFound(new { message = "Sala não encontrada" });
+
             return Ok(sala);
-            
         }
 
-
-
-
-
-
-
-
-
-
-
-
-        // Criação de sala para o chat - nos teste coloquei meu nome e coloque que sou lindo
-
+        // POST: api/sala
         [HttpPost]
-        public IActionResult Create(Sala sala)
+        public ActionResult<Sala> CreateSala([FromBody] Sala novaSala)
         {
-            _contextSala.Add(sala);
-            _contextSala.SaveChanges();
+            novaSala.IdSala = salas.Count > 0 ? salas.Max(s => s.IdSala) + 1 : 1;
+            salas.Add(novaSala);
+            return CreatedAtAction(nameof(GetSala), new { id = novaSala.IdSala }, novaSala);
+        }
+
+        // PUT: api/sala/{id}
+        [HttpPut("{id}")]
+        public ActionResult<Sala> UpdateSala(int id, [FromBody] Sala salaAtualizada)
+        {
+            var sala = salas.FirstOrDefault(s => s.IdSala == id);
+            if (sala == null)
+                return NotFound(new { message = "Sala não encontrada" });
+
+            sala.Nmsala = salaAtualizada.Nmsala;
+            sala.Blativo = salaAtualizada.Blativo;
+
             return Ok(sala);
         }
 
-
-        /// Para Alterar o nome da sala e alterar a ativação da sala
-
-          [HttpPut("{id}")]
-        public IActionResult AtualizaUsuSenha(int id, Sala sala)
+        // DELETE: api/sala/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteSala(int id)
         {
-            var salaBranco = _contextSala.Tb_salas.Find(id);
+            var sala = salas.FirstOrDefault(s => s.IdSala == id);
+            if (sala == null)
+                return NotFound(new { message = "Sala não encontrada" });
 
-            if(salaBranco == null)
-            {
-                return NotFound("Não consegui achar");
-            }
-
-            salaBranco.Nmsala =  sala.Nmsala;
-            salaBranco.Blativo =  sala.Blativo;
-
-            _contextSala.Tb_salas.Update(salaBranco);
-            _contextSala.SaveChanges();
-
-            return Ok(salaBranco);
+            salas.Remove(sala);
+            return Ok(new { message = "Sala removida com sucesso" });
         }
-
-
- /// Deletando sala do banco de dados 
-        
-
-    [HttpDelete("{id}")]
-    public IActionResult DeletarSala(int id)
-        {
-            var salaBranco = _contextSala.Tb_salas.Find(id);
-
-            if(salaBranco == null)
-            {
-                return NotFound("Não consegui achar");
-            }
-
-            _contextSala.Tb_salas.Remove(salaBranco);
-            _contextSala.SaveChanges();
-            return NoContent();
-        }
- 
     }
-        
-        
-    
 }

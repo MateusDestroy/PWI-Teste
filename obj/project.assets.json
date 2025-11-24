@@ -3426,19 +3426,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
+    "C:\\Users\\590059\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\TreinoC#\\TreinoC#.csproj",
+      "projectUniqueName": "C:\\PWI-Teste\\TreinoC#.csproj",
       "projectName": "TreinoC#",
-      "projectPath": "C:\\TreinoC#\\TreinoC#.csproj",
-      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\TreinoC#\\obj\\",
+      "projectPath": "C:\\PWI-Teste\\TreinoC#.csproj",
+      "packagesPath": "C:\\Users\\590059\\.nuget\\packages\\",
+      "outputPath": "C:\\PWI-Teste\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\590059\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"

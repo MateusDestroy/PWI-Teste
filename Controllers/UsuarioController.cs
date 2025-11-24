@@ -1,109 +1,70 @@
-using System;
+using Microsoft.AspNetCore.Mvc;
+using TreinoC_.Entities;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using TreinoC_.Context;
-using TreinoC_.Entities;
 
 namespace TreinoC_.Controllers
 {
-   
-        [ApiController]
-        [Route("[controller]")]
-        public class UsuarioController : ControllerBase
+    [ApiController]
+    [Route("api/[controller]")]
+    public class UsuarioController : ControllerBase
+    {
+        // Simulação de banco de dados em memória
+        private static List<Usuario> usuarios = new List<Usuario>();
+
+        // GET: api/usuario
+        [HttpGet]
+        public ActionResult<IEnumerable<Usuario>> GetUsuarios()
         {
-            private readonly PwiContext _contextUser;
-            
-        public UsuarioController(PwiContext contextUser)
-        {
-            _contextUser = contextUser;
-            
+            return Ok(usuarios);
         }
-       // procurando usuario por ID
+
+        // GET: api/usuario/{id}
         [HttpGet("{id}")]
-        public IActionResult ObterUsuId(int id)
+        public ActionResult<Usuario> GetUsuario(int id)
         {
-            var usu = _contextUser.Tb_usuario.Find(id);
+            var usuario = usuarios.FirstOrDefault(u => u.IdUsuario == id);
+            if (usuario == null)
+                return NotFound(new { message = "Usuário não encontrado" });
 
-
-            if (usu == null)
-            {
-                return NotFound("Erro - Não encontrado");
-            }
-
-
-            return Ok(usu);
-            
-        }
-
-
-        [HttpGet("ObterNomes")]
-        public IActionResult ObterNomes(string nome)
-        {
-            var usu = _contextUser.Tb_usuario.Where(x => x.NmNick.Contains(nome));
-            if (usu == null)
-            {
-                return NotFound();
-            }
-            return Ok(usu);
-        }
-
-
-
-        /// Criação de usuário para o chat
-
-         [HttpPost]
-        public IActionResult Create(Usuario usuario)
-        {
-            _contextUser.Add(usuario);
-            _contextUser.SaveChanges();
             return Ok(usuario);
         }
- 
 
+        // POST: api/usuario
+        [HttpPost]
+        public ActionResult<Usuario> CreateUsuario([FromBody] Usuario novoUsuario)
+        {
+            novoUsuario.IdUsuario = usuarios.Count > 0 ? usuarios.Max(u => u.IdUsuario) + 1 : 1;
+            usuarios.Add(novoUsuario);
+            return CreatedAtAction(nameof(GetUsuario), new { id = novoUsuario.IdUsuario }, novoUsuario);
+        }
 
-
-
-
-       /// Alteração de Senha e email na parte de Esqueci senha, para tela de login e senha
-
+        // PUT: api/usuario/{id}
         [HttpPut("{id}")]
-        public IActionResult AtualizaUsuSenha(int id, Usuario usuario)
+        public ActionResult<Usuario> UpdateUsuario(int id, [FromBody] Usuario usuarioAtualizado)
         {
-            var usuBranco = _contextUser.Tb_usuario.Find(id);
+            var usuario = usuarios.FirstOrDefault(u => u.IdUsuario == id);
+            if (usuario == null)
+                return NotFound(new { message = "Usuário não encontrado" });
 
-            if(usuBranco == null)
-            {
-                return NotFound("Não consegui achar");
-            }
+            usuario.NmEmail = usuarioAtualizado.NmEmail;
+            usuario.NmSenha = usuarioAtualizado.NmSenha;
+            usuario.NmNick = usuarioAtualizado.NmNick;
+            usuario.Dsmensagem = usuarioAtualizado.Dsmensagem;
 
-            usuBranco.NmEmail =  usuario.NmEmail;
-            usuBranco.NmSenha =  usuario.NmSenha;
-
-            _contextUser.Tb_usuario.Update(usuBranco);
-            _contextUser.SaveChanges();
-
-            return Ok(usuBranco);
+            return Ok(usuario);
         }
-        
- /// Deletando sala do banco de dados 
-        
 
-    [HttpDelete("{id}")]
-    public IActionResult DeletarUser(int id)
+        // DELETE: api/usuario/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteUsuario(int id)
         {
-            var usuarioBranco = _contextUser.Tb_usuario.Find(id);
+            var usuario = usuarios.FirstOrDefault(u => u.IdUsuario == id);
+            if (usuario == null)
+                return NotFound(new { message = "Usuário não encontrado" });
 
-            if(usuarioBranco == null)
-            {
-                return NotFound("Não consegui achar");
-            }
-
-            _contextUser.Tb_usuario.Remove(usuarioBranco);
-            _contextUser.SaveChanges();
-            return NoContent();
+            usuarios.Remove(usuario);
+            return Ok(new { message = "Usuário removido com sucesso" });
         }
- 
     }
 }
