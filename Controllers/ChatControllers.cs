@@ -14,7 +14,7 @@ namespace TreinoC_.Controllers
         private static List<Chat> chats = new List<Chat>();
 
         // GET: chat exibindo chats 
-        [HttpGet("ObterChats")]
+        [HttpGet("ObterChats")]   
         public ActionResult<IEnumerable<Chat>> GetChats()
         {
             return Ok(chats);

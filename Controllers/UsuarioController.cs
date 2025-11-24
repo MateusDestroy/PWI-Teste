@@ -13,7 +13,7 @@ namespace TreinoC_.Controllers
         private static List<Usuario> usuarios = new List<Usuario>();
 
         // GET: usuario - listando todos os usuario 
-        [HttpGet("ObterUsuarios")]
+        [HttpGet("ObterUsuarios")]  
         public ActionResult<IEnumerable<Usuario>> GetUsuarios()
         {
             return Ok(usuarios);

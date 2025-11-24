@@ -13,7 +13,7 @@ namespace TreinoC_.Controllers
         private static List<Sala> salas = new List<Sala>();
 
         // GET: sala listando todas as salas
-        [HttpGet("ObterSalas")]
+        [HttpGet("ObterSalas")]  
         public ActionResult<IEnumerable<Sala>> GetSalas()
         {
             return Ok(salas);
