@@ -65,7 +65,7 @@ dotnet tool install --global dotnet-ef
 pacote a nivel de projeto, necessario adicionar para rodar o projeto - dependecia do EntityFrameworkCore:
 dotnet add package Microsoft.EntityFrameworkCore.Design
 
-pacote a nivel de projeto, necessario adicionar para rodar nosso banco de dados - depdencia do EntityFrameworkCore:
+pacote a nivel de projeto, necessario adicionar para rodar nosso banco de dados - dependecia do EntityFrameworkCore:
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 
 dotnet restore
