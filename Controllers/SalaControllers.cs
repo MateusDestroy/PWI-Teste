@@ -17,7 +17,7 @@ namespace TreinoC_.Controllers
         public ActionResult<IEnumerable<Sala>> GetSalas()
         {
             return Ok(salas);
-        }
+        }  
 
         // GET: sala/{id} separando salas por {id}
         [HttpGet("{id}")]
