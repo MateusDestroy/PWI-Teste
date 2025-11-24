@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema; 
 
+
+/// Criação de nossas tabelas para  usar migrations e passar tudo para o Sql Server
+
 namespace TreinoC_.Entities
 {
     public class Chat
@@ -13,8 +16,6 @@ namespace TreinoC_.Entities
         [Key]
         public int Idchat{get; set;}
     
-
-
          public  int IdSala { get; set; }
          public  int IdUsuario { get; set; }
 
