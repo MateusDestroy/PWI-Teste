@@ -9,17 +9,17 @@ namespace TreinoC_.Controllers
     [Route("api/[controller]")]
     public class SalaController : ControllerBase
     {
-        // Simulação de banco de dados em memória
+        //listando usuario dentro do meu banco de dados 
         private static List<Sala> salas = new List<Sala>();
 
-        // GET: api/sala
+        // GET: sala listando todas as salas
         [HttpGet]
         public ActionResult<IEnumerable<Sala>> GetSalas()
         {
             return Ok(salas);
         }
 
-        // GET: api/sala/{id}
+        // GET: sala/{id} separando salas por {id}
         [HttpGet("{id}")]
         public ActionResult<Sala> GetSala(int id)
         {
@@ -30,7 +30,7 @@ namespace TreinoC_.Controllers
             return Ok(sala);
         }
 
-        // POST: api/sala
+        // POST: sala inserindo diferente salas 
         [HttpPost]
         public ActionResult<Sala> CreateSala([FromBody] Sala novaSala)
         {
@@ -39,7 +39,7 @@ namespace TreinoC_.Controllers
             return CreatedAtAction(nameof(GetSala), new { id = novaSala.IdSala }, novaSala);
         }
 
-        // PUT: api/sala/{id}
+        // PUT: sala/{id} alterando informações de sala
         [HttpPut("{id}")]
         public ActionResult<Sala> UpdateSala(int id, [FromBody] Sala salaAtualizada)
         {
@@ -53,7 +53,7 @@ namespace TreinoC_.Controllers
             return Ok(sala);
         }
 
-        // DELETE: api/sala/{id}
+        // DELETE: sala/{id} deletando salas - uma melhoria que colocaria se eu descobri era de deletar sala por ativo e desativo
         [HttpDelete("{id}")]
         public ActionResult DeleteSala(int id)
         {
