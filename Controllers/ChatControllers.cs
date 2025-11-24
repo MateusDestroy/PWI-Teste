@@ -13,7 +13,7 @@ namespace TreinoC_.Controllers
         // listando chats dentro do meu banco de dados 
         private static List<Chat> chats = new List<Chat>();
 
-        // GET: api/chat
+        // GET: chat exibindo chats 
         [HttpGet]
         public ActionResult<IEnumerable<Chat>> GetChats()
         {
