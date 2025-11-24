@@ -17,7 +17,7 @@ namespace TreinoC_.Controllers
         public ActionResult<IEnumerable<Usuario>> GetUsuarios()
         {
             return Ok(usuarios);
-        }
+        }   
 
         // GET: usuario/{id} -  listando usuario por id 
         [HttpGet("ObterUsuarioPor{id}")]

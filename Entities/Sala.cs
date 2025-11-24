@@ -6,6 +6,8 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
+/// Criação de nossas tabelas para  usar migrations e passar tudo para o Sql Server
+
 namespace TreinoC_.Entities
 {
     public class Sala
