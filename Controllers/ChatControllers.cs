@@ -10,7 +10,7 @@ namespace TreinoC_.Controllers
     [Route("api/[controller]")]
     public class ChatController : ControllerBase
     {
-        // Simulação de banco de dados em memória
+        // listando chats dentro do meu banco de dados 
         private static List<Chat> chats = new List<Chat>();
 
         // GET: api/chat
@@ -20,7 +20,7 @@ namespace TreinoC_.Controllers
             return Ok(chats);
         }
 
-        // GET: api/chat/{id}
+        // GET: chat/{id} separando chat por {id}
         [HttpGet("{id}")]
         public ActionResult<Chat> GetChat(int id)
         {
@@ -31,7 +31,7 @@ namespace TreinoC_.Controllers
             return Ok(chat);
         }
 
-        // POST: api/chat
+        // POST: chat/ post por id e sala em cada chat 
         [HttpPost]
         public ActionResult<Chat> CreateChat([FromBody] Chat novoChat)
         {
