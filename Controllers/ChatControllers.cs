@@ -21,7 +21,7 @@ namespace TreinoC_.Controllers
         }
 
         // GET: chat/{id} separando chat por {id}
-        [HttpGet("ObeterChatPor{id}")]
+        [HttpGet("ObeterChatPor/{id}")]
         public ActionResult<Chat> GetChat(int id)
         {
             var chat = chats.FirstOrDefault(c => c.Idchat == id);
