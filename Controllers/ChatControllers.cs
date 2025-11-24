@@ -9,7 +9,7 @@ namespace TreinoC_.Controllers
     [ApiController]
     [Route("api/[controller]")]
     public class ChatController : ControllerBase
-    {
+    {   
         // listando chats dentro do meu banco de dados 
         private static List<Chat> chats = new List<Chat>();
 
