@@ -3,7 +3,7 @@ using TreinoC_.Entities;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TreinoC_.Controllers
+namespace TreinoC_.Controllers 
 {
     [ApiController]
     [Route("api/[controller]")]
