@@ -20,7 +20,7 @@ namespace TreinoC_.Controllers
         }  
 
         // GET: sala/{id} separando salas por {id}
-        [HttpGet("ObterSalaPor{id}")]
+        [HttpGet("ObterSalaPor/{id}")]
         public ActionResult<Sala> GetSala(int id)
         {
             var sala = salas.FirstOrDefault(s => s.IdSala == id);
@@ -40,7 +40,7 @@ namespace TreinoC_.Controllers
         }
 
         // PUT: sala/{id} alterando informações de sala
-        [HttpPut("AlterarSalaPor{id}")]
+        [HttpPut("AlterarSalaPor/{id}")]
         public ActionResult<Sala> UpdateSala(int id, [FromBody] Sala salaAtualizada)
         {
             var sala = salas.FirstOrDefault(s => s.IdSala == id);
@@ -54,7 +54,7 @@ namespace TreinoC_.Controllers
         }
 
         // DELETE: sala/{id} deletando salas - uma melhoria que colocaria se eu descobri era de deletar sala por ativo e desativo
-        [HttpDelete("DeletarSalaPor{id}")]
+        [HttpDelete("DeletarSalaPor/{id}")]
         public ActionResult DeleteSala(int id)
         {
             var sala = salas.FirstOrDefault(s => s.IdSala == id);

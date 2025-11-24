@@ -20,7 +20,7 @@ namespace TreinoC_.Controllers
         }   
 
         // GET: usuario/{id} -  listando usuario por id 
-        [HttpGet("ObterUsuarioPor{id}")]
+        [HttpGet("ObterUsuarioPor/{id}")]
         public ActionResult<Usuario> GetUsuario(int id)
         {
             var usuario = usuarios.FirstOrDefault(u => u.IdUsuario == id);
@@ -40,7 +40,7 @@ namespace TreinoC_.Controllers
         }
 
         // PUT: usuario/{id} - alterando usuario dentro do banco de dados 
-        [HttpPut("AlterarUsuarioPor{id}")]
+        [HttpPut("AlterarUsuarioPor/{id}")]
         public ActionResult<Usuario> UpdateUsuario(int id, [FromBody] Usuario usuarioAtualizado)
         {
             var usuario = usuarios.FirstOrDefault(u => u.IdUsuario == id);
@@ -56,7 +56,7 @@ namespace TreinoC_.Controllers
         }
 
         // DELETE: usuario/{id} - deletando usuario dentro do banco.
-        [HttpDelete("DeletarUsuarioPor{id}")]
+        [HttpDelete("DeletarUsuarioPor/{id}")]
         public ActionResult DeleteUsuario(int id)
         {
             var usuario = usuarios.FirstOrDefault(u => u.IdUsuario == id);
