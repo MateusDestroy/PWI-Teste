@@ -21,7 +21,7 @@ Essas telas servem para ilustrar o funcionamento da API dentro de uma aplicaçã
 Antes de executar o projeto, verifique:
 1. Instale o **.NET SDK 7.0.410** (ou a versão utilizada no projeto).  
 2. Confirme que o **SQL Server Express** e o **SSMS** estão atualizados.  
-3. Configure a **connection string** no arquivo `appsettings.json` para apontar para seu banco de dados.  
+3. Configure a **connection string** no arquivo `appsettings.Development.json` para apontar para seu banco de dados.  
 
 ---
 
