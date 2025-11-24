@@ -9,17 +9,17 @@ namespace TreinoC_.Controllers
     [Route("api/[controller]")]
     public class UsuarioController : ControllerBase
     {
-        // Simulação de banco de dados em memória
+        // Listando todos os usuario
         private static List<Usuario> usuarios = new List<Usuario>();
 
-        // GET: api/usuario
+        // GET: usuario - listando todos os usuario 
         [HttpGet]
         public ActionResult<IEnumerable<Usuario>> GetUsuarios()
         {
             return Ok(usuarios);
         }
 
-        // GET: api/usuario/{id}
+        // GET: usuario/{id} -  listando usuario por id 
         [HttpGet("{id}")]
         public ActionResult<Usuario> GetUsuario(int id)
         {
@@ -30,7 +30,7 @@ namespace TreinoC_.Controllers
             return Ok(usuario);
         }
 
-        // POST: api/usuario
+        // POST: usuario - colocando usuario dentro do banco de dados
         [HttpPost]
         public ActionResult<Usuario> CreateUsuario([FromBody] Usuario novoUsuario)
         {
@@ -39,7 +39,7 @@ namespace TreinoC_.Controllers
             return CreatedAtAction(nameof(GetUsuario), new { id = novoUsuario.IdUsuario }, novoUsuario);
         }
 
-        // PUT: api/usuario/{id}
+        // PUT: usuario/{id} - alterando usuario dentro do banco de dados 
         [HttpPut("{id}")]
         public ActionResult<Usuario> UpdateUsuario(int id, [FromBody] Usuario usuarioAtualizado)
         {
@@ -55,7 +55,7 @@ namespace TreinoC_.Controllers
             return Ok(usuario);
         }
 
-        // DELETE: api/usuario/{id}
+        // DELETE: usuario/{id} - deletando usuario dentro do banco.
         [HttpDelete("{id}")]
         public ActionResult DeleteUsuario(int id)
         {
