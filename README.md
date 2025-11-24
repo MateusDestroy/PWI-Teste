@@ -27,8 +27,7 @@ https://www.figma.com/design/ZJVaUswEk9FrMnghKbDRmQ/Untitled?node-id=0-1&m=dev&t
 ###  Erro que já tive ao executar o projeto em outra maquina
 
 1. Caso tenha problema de subir a api e ela não rodar direito, verifique a versão do SDK.
-2. 
-3. Caso tenha executardo e esteja dando **not found**, tente usar esse comando **dotnet** (dotnet watch -lp https) || mensagem de erro = caso seja **not found** - **warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3] Failed to determine the https port for redirect**
+2. Caso tenha executardo e esteja dando **not found**, tente usar esse comando **dotnet** (dotnet watch -lp https) || mensagem de erro = caso seja **not found** - **warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3] Failed to determine the https port for redirect**
 
 
 ### ▶️ Executando o Projeto
