@@ -14,14 +14,14 @@ namespace TreinoC_.Controllers
         private static List<Chat> chats = new List<Chat>();
 
         // GET: chat exibindo chats 
-        [HttpGet]
+        [HttpGet("ObterChats")]
         public ActionResult<IEnumerable<Chat>> GetChats()
         {
             return Ok(chats);
         }
 
         // GET: chat/{id} separando chat por {id}
-        [HttpGet("{id}")]
+        [HttpGet("ObeterChatPor{id}")]
         public ActionResult<Chat> GetChat(int id)
         {
             var chat = chats.FirstOrDefault(c => c.Idchat == id);
@@ -32,7 +32,7 @@ namespace TreinoC_.Controllers
         }
 
         // POST: chat/ post por id e sala em cada chat 
-        [HttpPost]
+        [HttpPost("CriarChat")]
         public ActionResult<Chat> CreateChat([FromBody] Chat novoChat)
         {
             novoChat.Idchat = chats.Count > 0 ? chats.Max(c => c.Idchat) + 1 : 1;

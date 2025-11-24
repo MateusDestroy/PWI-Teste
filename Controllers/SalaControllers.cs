@@ -13,14 +13,14 @@ namespace TreinoC_.Controllers
         private static List<Sala> salas = new List<Sala>();
 
         // GET: sala listando todas as salas
-        [HttpGet]
+        [HttpGet("ObterSalas")]
         public ActionResult<IEnumerable<Sala>> GetSalas()
         {
             return Ok(salas);
         }
 
         // GET: sala/{id} separando salas por {id}
-        [HttpGet("{id}")]
+        [HttpGet("ObterSalaPor{id}")]
         public ActionResult<Sala> GetSala(int id)
         {
             var sala = salas.FirstOrDefault(s => s.IdSala == id);
@@ -31,7 +31,7 @@ namespace TreinoC_.Controllers
         }
 
         // POST: sala inserindo diferente salas 
-        [HttpPost]
+        [HttpPost("CriarSala")]
         public ActionResult<Sala> CreateSala([FromBody] Sala novaSala)
         {
             novaSala.IdSala = salas.Count > 0 ? salas.Max(s => s.IdSala) + 1 : 1;
@@ -40,7 +40,7 @@ namespace TreinoC_.Controllers
         }
 
         // PUT: sala/{id} alterando informações de sala
-        [HttpPut("{id}")]
+        [HttpPut("AlterarSalaPor{id}")]
         public ActionResult<Sala> UpdateSala(int id, [FromBody] Sala salaAtualizada)
         {
             var sala = salas.FirstOrDefault(s => s.IdSala == id);
@@ -54,7 +54,7 @@ namespace TreinoC_.Controllers
         }
 
         // DELETE: sala/{id} deletando salas - uma melhoria que colocaria se eu descobri era de deletar sala por ativo e desativo
-        [HttpDelete("{id}")]
+        [HttpDelete("DeletarSalaPor{id}")]
         public ActionResult DeleteSala(int id)
         {
             var sala = salas.FirstOrDefault(s => s.IdSala == id);

@@ -13,14 +13,14 @@ namespace TreinoC_.Controllers
         private static List<Usuario> usuarios = new List<Usuario>();
 
         // GET: usuario - listando todos os usuario 
-        [HttpGet]
+        [HttpGet("ObterUsuarios")]
         public ActionResult<IEnumerable<Usuario>> GetUsuarios()
         {
             return Ok(usuarios);
         }
 
         // GET: usuario/{id} -  listando usuario por id 
-        [HttpGet("{id}")]
+        [HttpGet("ObterUsuarioPor{id}")]
         public ActionResult<Usuario> GetUsuario(int id)
         {
             var usuario = usuarios.FirstOrDefault(u => u.IdUsuario == id);
@@ -31,7 +31,7 @@ namespace TreinoC_.Controllers
         }
 
         // POST: usuario - colocando usuario dentro do banco de dados
-        [HttpPost]
+        [HttpPost("CriarUsuario")]
         public ActionResult<Usuario> CreateUsuario([FromBody] Usuario novoUsuario)
         {
             novoUsuario.IdUsuario = usuarios.Count > 0 ? usuarios.Max(u => u.IdUsuario) + 1 : 1;
@@ -40,7 +40,7 @@ namespace TreinoC_.Controllers
         }
 
         // PUT: usuario/{id} - alterando usuario dentro do banco de dados 
-        [HttpPut("{id}")]
+        [HttpPut("AlterarUsuarioPor{id}")]
         public ActionResult<Usuario> UpdateUsuario(int id, [FromBody] Usuario usuarioAtualizado)
         {
             var usuario = usuarios.FirstOrDefault(u => u.IdUsuario == id);
@@ -56,7 +56,7 @@ namespace TreinoC_.Controllers
         }
 
         // DELETE: usuario/{id} - deletando usuario dentro do banco.
-        [HttpDelete("{id}")]
+        [HttpDelete("DeletarUsuarioPor{id}")]
         public ActionResult DeleteUsuario(int id)
         {
             var usuario = usuarios.FirstOrDefault(u => u.IdUsuario == id);
